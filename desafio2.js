@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-class product {
+class Product {
   constructor(id, title, description, price, thumbnail, code, stock) {
     this.id = id;
     this.title = title;
@@ -98,7 +98,7 @@ class ProductManager {
     if (fs.existsSync(this.path)) {
       dato = await fs.promises.readFile(this.path, 'utf-8');
       productos = JSON.parse(dato);
-      let productoIndex = productos.findIndex((productos) => productos.it === id);
+      let productoIndex = productos.findIndex((productos) => productos.id === id);
       if (productoIndex === -1) {
         console.log("Producto no encontrado");
       } else {
@@ -112,12 +112,12 @@ class ProductManager {
     }
   }
 }
-let pm = new ProductManager('./files/productos.txt');
+let lanzar = new ProductManager('./files/productos.txt');
 
 /* Llamada a métodos */
-//pm.getProducts().then(productos => console.log(productos));
-pm.addProduct("Detergente", "Detergente elimina todo", 123, "", "det555", 40);
-//pm.getProducts().then(productos => console.log(productos));
-//pm.getProductById(1).then(productos => console.log(productos));
-//pm.updateProduct("Detergente", "Se modifica description del producto", 456, "", "det556", 40);
-//pm.deleteProduct(1);
+//lanzar.getProducts().then(productos => console.log(productos));
+//lanzar.addProduct("Detergente", "Detergente elimina todo", 123, "imagen no encontrada", "det555", 40);
+//lanzar.getProducts().then(productos => console.log(productos));
+//lanzar.getProductById(1).then(productos => console.log(productos));
+//lanzar.updateProduct("Detergente", "Se modifica description del producto", 456, "", "det556", 40);
+//lanzar.deleteProduct(2);
